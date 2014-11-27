@@ -1,0 +1,20 @@
+Steps:
+1. 在memory compiler產生memory的RTL code
+	會產生RA2SH.v
+2. 參考CummingsSUNG2002SJ_FIFO1.pdf中的第6節的code
+	2.1 記得將fifo1.v中的
+		fifomen #(DSIZE,ASIZE) fifomem改成
+		RA2SH #(DSIZE,ASIZE) fifomem
+
+	2.2 在RA2SH中的接線，重新連接
+		wfull是否可以空接？
+		另外要新增此次lab06要求的：
+		almost full, almost empty, full, empty
+
+
+3. 先用ncverilog 去compile看看，複製lab01的makefile
+	將SRC加入所有的RTL code，包括RA2SH.v
+
+	直到沒有錯誤，milestone：壓縮成source.zip
+
+3. And then, 做RTL simulation前，先寫個testbench
