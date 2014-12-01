@@ -1,7 +1,7 @@
 module wptr_full #(parameter ADDRSIZE=8)
 (
 	output reg				wfull, wfull_almost,
-	output reg				fifo_error_w,
+	output 				fifo_error_w,
 	output [ADDRSIZE-1:0] waddr,
 	output reg [ADDRSIZE:0] wptr,
 	input [ADDRSIZE:0] wq2_rptr,
@@ -66,4 +66,7 @@ always @(posedge wclk or negedge wrst_n) begin
 		wfull_almost <= wfull_val_almost;
 	end
 end
+
+assign fifo_error_w = winc & wfull;
+
 endmodule

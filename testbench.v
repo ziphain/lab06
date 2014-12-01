@@ -13,7 +13,7 @@ module stimulus;
 	wire [DSIZE - 1:0] rdata;
 	wire wfull, rempty;
 	wire rempty_almost, wfull_almost;
-	//wire almost_rempty, almost_wfull;
+	wire fifo_error_r, fifo_error_w;
 
 	fifo1 fifo(
 		.rclk(rclk),
@@ -27,11 +27,17 @@ module stimulus;
 		.rempty(rempty),
 		.wfull(wfull),
 		.rempty_almost(rempty_almost),
-		.wfull_almost(wfull_almost)
+		.wfull_almost(wfull_almost),
+		.fifo_error_r(fifo_error_r),
+		.fifo_error_w(fifo_error_w)
 	);
 
 	always #(rcyc/2) rclk = ~rclk;
 	always #(wcyc/2) wclk = ~wclk;
+
+		initial begin
+			$sdf_annotate("fifo.sdf", fifo);
+		end
 
 		initial begin
 			$fsdbDumpfile("fifo.fsdb");
@@ -41,21 +47,27 @@ module stimulus;
 		end
 
 		initial begin
-			rclk = 0;
-			wclk = 0;
+			rclk = 1;
+			wclk = 1;
 			rrst_n = 0;
 			wrst_n = 0;
 			//wdata = 16'd0;
 			rinc = 0;
 			winc = 0;
 
-			#(wcyc); wrst_n = 1; rrst_n = 1;
-			winc = 1; 
-			#(wcyc); wdata = 16'd16;
-			#(wcyc); wdata = 16'd19;
-			#(wcyc); wdata = 16'd10;
-			#(wcyc);
-			winc = 0;
+
+
+
+			#(wcyc) wrst_n = 1; rrst_n = 1;
+			 
+			
+			#(rcyc) rinc = 1;
+
+			#(wcyc) winc = 1; wdata = 16'd16;
+			#(wcyc) wdata = 16'd19;
+			#(wcyc) wdata = 16'd10; 
+			#(wcyc) winc = 0;
+			
 			rinc = 1;
 			#(rcyc);
 			#(rcyc);

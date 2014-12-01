@@ -1,6 +1,6 @@
 module rptr_empty #(parameter ADDRSIZE = 8)
 	(output reg rempty, rempty_almost,
-	output reg fifo_error_r,
+	output fifo_error_r,
 	output 		[ADDRSIZE-1:0] raddr,
 	output reg	[ADDRSIZE:0]	rptr,
 	input 		[ADDRSIZE:0]	rq2_wptr,
@@ -47,6 +47,7 @@ module rptr_empty #(parameter ADDRSIZE = 8)
 		end
 	end
 
+	assign fifo_error_r = rinc & rempty;
 endmodule
 
 

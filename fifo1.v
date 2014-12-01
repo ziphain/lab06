@@ -4,6 +4,7 @@ module fifo1 #(parameter DSIZE = 16,parameter ADDRSIZE = 8)
 	output wfull,
 	output rempty,
 	output rempty_almost, wfull_almost,
+	output fifo_error_r, fifo_error_w,
 	input [DSIZE-1:0] wdata,
 	input winc, wclk, wrst_n,
 	input rinc, rclk, rrst_n
@@ -28,7 +29,7 @@ RA2SH #(DSIZE,ADDRSIZE) fifomem
    .OENA(1'b0),   // Output enable
    // port B: read port
    .QB(rdata),    // Data output B
-   .CLKB(~rclk),   // **
+   .CLKB(~rclk),  // **
    .CENB(1'b0),   // Chip enable
    .WENB(1'b1),   // Write enable
    .AB(raddr),    // Address B
@@ -44,7 +45,8 @@ rptr_empty #(ADDRSIZE) rptr_empty
  .rinc(rinc), 
  .rclk(rclk), 
  .rrst_n(rrst_n),
- .rempty_almost(rempty_almost)
+ .rempty_almost(rempty_almost),
+ .fifo_error_r(fifo_error_r)
  );
 
 wptr_full #(ADDRSIZE) wptr_full
@@ -56,7 +58,8 @@ wptr_full #(ADDRSIZE) wptr_full
  .winc(winc), 
  .wclk(wclk), 
  .wrst_n(wrst_n),
- .wfull_almost(wfull_almost)
+ .wfull_almost(wfull_almost),
+ .fifo_error_w(fifo_error_w)
  );
 
 endmodule
