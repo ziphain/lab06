@@ -56,19 +56,19 @@ module RA2SH (
    // define port A is write port, B is read port
    QA,    
    CLKA,
-   CENA,  // read enable
-   WENA,  // write enable
+   CENA,  // Chip enable
+   WENA,  // Write enable
    AA,    // A's address
-   DA,    // when write, connect to wdata
-   OENA,
+   DA,    // data A
+   OENA,  // Output enable
 
    QB,  // when read data, connect to rdata
    CLKB,
-   CENB, // read enable
-   WENB, // write enable
+   CENB, // Chip enable
+   WENB, // Write enable
    AB,  // B's address
-   DB,
-   OENB
+   DB,  // data B
+   OENB  // Output enable
 );
    parameter		   BITS = 16;
    parameter		   word_depth = 256;

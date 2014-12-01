@@ -4,7 +4,10 @@ SRC	=	RA2SH.v\
 		rptr_empty.v\
 		sync_r2w.v\
 		sync_w2r.v\
-		wptr_full.v
+		wptr_full.v\
+		testbench.v
+
+TIME	=	+nospecify +notimeingchecks
 
 VLOGARG	=	+access+r
 
@@ -18,7 +21,7 @@ RM	=	-rm	-rf
 all :: sim
 
 sim :
-	$(VLOG)	$(SRC)	$(VLOGARG)
+	$(VLOG)	$(SRC)	$(TIME)	$(VLOGARG)
 
 clean :
 	$(RM)	$(TMPFILE)

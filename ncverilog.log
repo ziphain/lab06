@@ -1,0 +1,115 @@
+ncverilog: 12.20-s012: (c) Copyright 1995-2013 Cadence Design Systems, Inc.
+TOOL:	ncverilog	12.20-s012: Started on Dec 01, 2014 at 20:12:41 CST
+ncverilog
+	RA2SH.v
+	fifo1.v
+	rptr_empty.v
+	sync_r2w.v
+	sync_w2r.v
+	wptr_full.v
+	testbench.v
+	+nospecify
+	+notimeingchecks
+	+access+r
+Recompiling... reason: file './testbench.v' is newer than expected.
+	expected: Sun Nov 30 23:52:28 2014
+	actual:   Mon Dec  1 20:13:07 2014
+file: testbench.v
+	module worklib.stimulus:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.stimulus:v <0x193faa85>
+			streams:  12, words:  9031
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 7       7
+		Primitives:             88       2
+		Registers:             138     138
+		Scalar wires:           31       -
+		Expanded wires:         80       6
+		Vectored wires:         12       -
+		Always blocks:          14      14
+		Initial blocks:          2       2
+		Cont. assignments:      16      23
+		Pseudo assignments:     11      11
+		Timing checks:         217       -
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.stimulus:v
+Loading snapshot worklib.stimulus:v .................... Done
+*Verdi3* Loading libsscore_ius122.so
+*Verdi3* : Enable Parallel Dumping.
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+FSDB Dumper for IUS, Release Verdi3_2013.07, Linux, 07/04/2013
+(C) 1996 - 2013 by Synopsys, Inc.
+*Verdi3* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi3* : Create FSDB file 'fifo.fsdb'
+*Verdi3* : Begin traversing the scopes, layer (0).
+*Verdi3* : End of traversing.
+                   0 rclk=0 wclk=0 rrst_n=0 wrst_n=0 winc= 0 wdata=    x rinc=0 rdata=    x
+                   5 rclk=0 wclk=1 rrst_n=0 wrst_n=0 winc= 0 wdata=    x rinc=0 rdata=    x
+                  10 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 1 wdata=    x rinc=0 rdata=    x
+                  15 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 1 wdata=    x rinc=0 rdata=    x
+                  20 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 1 wdata=   16 rinc=0 rdata=    x
+                  25 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 1 wdata=   16 rinc=0 rdata=    x
+                  30 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 1 wdata=   19 rinc=0 rdata=    x
+                  35 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 1 wdata=   19 rinc=0 rdata=    x
+                  40 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 1 wdata=   10 rinc=0 rdata=    x
+                  45 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 1 wdata=   10 rinc=0 rdata=    x
+                  50 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                  55 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                  60 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                  65 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                  70 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                  75 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                  80 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                  85 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                  90 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                  95 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                 100 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                 105 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                 110 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                 115 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=    x
+                 120 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   16
+                 125 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   16
+                 130 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   16
+                 135 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   16
+                 140 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   19
+                 145 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   19
+                 150 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   19
+                 155 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   19
+                 160 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 165 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 170 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 175 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 180 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 185 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 190 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 195 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 200 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 205 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 210 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 215 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 220 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 225 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 230 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 235 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 240 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 245 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 250 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 255 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 260 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 265 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 270 rclk=1 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 275 rclk=1 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 280 rclk=0 wclk=0 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+                 285 rclk=0 wclk=1 rrst_n=1 wrst_n=1 winc= 0 wdata=   10 rinc=1 rdata=   10
+Simulation complete via $finish(1) at time 290 NS + 0
+./testbench.v:68 			#(rcyc*8); $finish;
+ncsim> exit
+TOOL:	ncverilog	12.20-s012: Exiting on Dec 01, 2014 at 20:12:45 CST  (total: 00:00:04)
