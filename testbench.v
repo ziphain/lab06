@@ -51,58 +51,57 @@ module stimulus;
 			rinc = 0;
 			winc = 0;
 
-
+			#(rcyc) wrst_n = 1; rrst_n = 1;
+			// 
 			fork
+				// write thread
 				begin
-
+					#(wcyc) winc = 1; 
+					#(wcyc) wdata = 16'd1;
+					#(wcyc) wdata = 16'd2;
+					#(wcyc) wdata = 16'd3;
+					#(wcyc) wdata = 16'd4;
+					#(wcyc) wdata = 16'd5;
+					#(wcyc) wdata = 16'd6;
+					/*
+					#(wcyc) wdata = 16'd7;
+					#(wcyc) wdata = 16'd8;
+					#(wcyc) wdata = 16'd9;
+					
+					#(wcyc) wdata = 16'd10;
+					#(wcyc) wdata = 16'd11;
+					#(wcyc) wdata = 16'd12;
+					#(wcyc) wdata = 16'd13;
+					#(wcyc) wdata = 16'd14;
+					#(wcyc) wdata = 16'd15;
+					#(wcyc) wdata = 16'd16;
+					#(wcyc) wdata = 16'd17;
+					#(wcyc) wdata = 16'd18;
+					#(wcyc) wdata = 16'd19;
+					#(wcyc) winc = 0;
+					*/
 				end
-
+				// read thread
 				begin
-
+					#(rcyc) rinc = 1;
+					#(rcyc);
+					#(rcyc);
+					#(rcyc);
+					#(rcyc);
+					#(rcyc);
+					#(rcyc);
+					#(rcyc);
+					#(rcyc);
+					#(rcyc);
+					#(rcyc) rinc = 0;
 				end
 			join
 
-			#(wcyc) wrst_n = 1; rrst_n = 1;
-			 
-			
-			//#(rcyc) rinc = 1;
 
-			#(wcyc) winc = 1; 
-			#(wcyc) wdata = 16'd16;
-			#(wcyc) wdata = 16'd18;
-			#(wcyc) wdata = 16'd12;
-			#(wcyc) winc = 0;
-			
-			#(rcyc) rinc = 1;
-
-			#(rcyc);
-			#(rcyc);
-			#(rcyc);
-
-			#(rcyc*8); $finish;
+			#(rcyc); $finish;
 		end
 
-		/*
-		task nop;
-			begin
-				start = 0;
-			end
-		endtask
 
-		task load;
-			begin
-				start = 1;
-			end
-		endtask
-
-		task data_in;
-			input [7:0] data1, data2;
-			begin
-				a = data1;
-				b = data2;
-			end
-		endtask
-		*/
 endmodule
 
 

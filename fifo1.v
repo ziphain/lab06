@@ -26,7 +26,7 @@ RA2SH #(DSIZE,ADDRSIZE) fifomem
    .WENA( ~(winc & ~wfull) ), // ** Write enable
    .AA(waddr),    // Address A
    .DA(wdata),    // Data input A
-   .OENA(1'b0),   // Output enable
+   .OENA(1'b1),   // Output enable
    // port B: read port
    .QB(rdata),    // Data output B
    .CLKB(~rclk),  // **

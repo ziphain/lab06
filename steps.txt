@@ -33,9 +33,6 @@ set link_library      "slow.db fast.db dw_foundation.sldb fifo_slow.db fifo_fast
 
 然後將.db檔，加到fifo.dc中的 set_local_link_library裡面
 
-
-
-
 5. Synthesis
 
 

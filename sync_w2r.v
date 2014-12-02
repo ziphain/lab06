@@ -1,7 +1,8 @@
 module sync_w2r #(parameter ADDRSIZE = 8)
-	(output reg [ADDRSIZE:0] rq2_wptr,
+(	output reg 	[ADDRSIZE:0] rq2_wptr,
 	input		[ADDRSIZE:0] wptr,
-	input					 rclk, rrst_n);
+	input					 rclk, rrst_n
+);
 
 	reg [ADDRSIZE:0] rq1_wptr;
 

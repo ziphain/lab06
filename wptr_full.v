@@ -8,12 +8,12 @@ module wptr_full #(parameter ADDRSIZE=8)
 	input [ADDRSIZE:0] wq2_rptr,
 	input					winc,wclk,wrst_n
 );
-reg [ADDRSIZE:0] wbin;
-wire [ADDRSIZE:0] wgraynext,wbinnext;
-// add following for almost full, empty
-wire [ADDRSIZE:0] wgraynext_almost, wbinnext_almost;
+	reg [ADDRSIZE:0] wbin;
+	wire [ADDRSIZE:0] wgraynext,wbinnext;
+	// add following for almost full, empty
+	wire [ADDRSIZE:0] wgraynext_almost, wbinnext_almost;
 
-reg wfull_val, wfull_val_almost;
+	reg wfull_val, wfull_val_almost;
 
 //GRAYSTYLE2 pointer
 always @(posedge wclk or negedge wrst_n) begin
@@ -32,7 +32,7 @@ assign wbinnext = wbin + (winc & ~wfull);
 assign wgraynext = (wbinnext >> 1) ^ wbinnext;
 // for almost
 assign wbinnext_almost = wbin + (winc & ~wfull) + 1'b1;
-assign wgraynext_almost = (wbinnext_almost >> 1) ^ wbinnext_almost + 1'b1;
+assign wgraynext_almost = (wbinnext_almost >> 1) ^ wbinnext_almost;
 
 assign wfull_almost = wfull_val_almost;
 
