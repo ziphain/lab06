@@ -1,0 +1,52 @@
+###################################################################
+
+# Created by write_script -format dctcl on Mon Dec  1 23:41:54 2014
+
+###################################################################
+
+# Set the current_design #
+current_design fifo1
+
+set_units -time ns -resistance kOhm -capacitance pF -power mW -voltage V       \
+-current mA
+remove_wire_load_model
+set_local_link_library {slow.db,fast.db,fifo_slow.db,fifo_fast.db}
+create_clock [get_ports wclk]  -period 10  -waveform {0 5}
+set_fix_hold [get_clocks wclk]
+set_dont_touch_network [get_clocks wclk]
+create_clock [get_ports rclk]  -period 20  -waveform {0 10}
+set_fix_hold [get_clocks rclk]
+set_dont_touch_network [get_clocks rclk]
+set_max_delay 10  -from [list [get_ports {wdata[14]}] [get_ports {wdata[13]}]  \
+[get_ports {wdata[12]}] [get_ports {wdata[11]}] [get_ports {wdata[10]}]        \
+[get_ports {wdata[9]}] [get_ports {wdata[8]}] [get_ports {wdata[7]}]           \
+[get_ports {wdata[6]}] [get_ports {wdata[5]}] [get_ports {wdata[4]}]           \
+[get_ports {wdata[3]}] [get_ports {wdata[2]}] [get_ports {wdata[1]}]           \
+[get_ports {wdata[0]}] [get_ports winc] [get_ports wrst_n] [get_ports          \
+{wdata[15]}]]  -to [list [get_ports wfull] [get_ports fifo_error_w] [get_ports \
+wfull_almost]]
+set_min_delay 10  -from [list [get_ports {wdata[14]}] [get_ports {wdata[13]}]  \
+[get_ports {wdata[12]}] [get_ports {wdata[11]}] [get_ports {wdata[10]}]        \
+[get_ports {wdata[9]}] [get_ports {wdata[8]}] [get_ports {wdata[7]}]           \
+[get_ports {wdata[6]}] [get_ports {wdata[5]}] [get_ports {wdata[4]}]           \
+[get_ports {wdata[3]}] [get_ports {wdata[2]}] [get_ports {wdata[1]}]           \
+[get_ports {wdata[0]}] [get_ports winc] [get_ports wrst_n] [get_ports          \
+{wdata[15]}]]  -to [list [get_ports wfull] [get_ports fifo_error_w] [get_ports \
+wfull_almost]]
+set_max_delay 20  -from [list [get_ports rrst_n] [get_ports rinc]]  -to [list  \
+[get_ports {rdata[14]}] [get_ports {rdata[13]}] [get_ports {rdata[12]}]        \
+[get_ports {rdata[11]}] [get_ports {rdata[10]}] [get_ports {rdata[9]}]         \
+[get_ports {rdata[8]}] [get_ports {rdata[7]}] [get_ports {rdata[6]}]           \
+[get_ports {rdata[5]}] [get_ports {rdata[4]}] [get_ports {rdata[3]}]           \
+[get_ports {rdata[2]}] [get_ports {rdata[1]}] [get_ports {rdata[0]}]           \
+[get_ports rempty_almost] [get_ports {rdata[15]}] [get_ports fifo_error_r]     \
+[get_ports rempty]]
+set_min_delay 20  -from [list [get_ports rrst_n] [get_ports rinc]]  -to [list  \
+[get_ports {rdata[14]}] [get_ports {rdata[13]}] [get_ports {rdata[12]}]        \
+[get_ports {rdata[11]}] [get_ports {rdata[10]}] [get_ports {rdata[9]}]         \
+[get_ports {rdata[8]}] [get_ports {rdata[7]}] [get_ports {rdata[6]}]           \
+[get_ports {rdata[5]}] [get_ports {rdata[4]}] [get_ports {rdata[3]}]           \
+[get_ports {rdata[2]}] [get_ports {rdata[1]}] [get_ports {rdata[0]}]           \
+[get_ports rempty_almost] [get_ports {rdata[15]}] [get_ports fifo_error_r]     \
+[get_ports rempty]]
+1

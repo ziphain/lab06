@@ -1,10 +1,13 @@
 module rptr_empty #(parameter ADDRSIZE = 8)
-	(output reg rempty, rempty_almost,
+	(output reg rempty, 
+	output rempty_almost,
 	output fifo_error_r,
 	output 		[ADDRSIZE-1:0] raddr,
 	output reg	[ADDRSIZE:0]	rptr,
 	input 		[ADDRSIZE:0]	rq2_wptr,
 	input						rinc, rclk, rrst_n);
+
+	wire rempty_val_almost;
 
 	reg	[ADDRSIZE:0] rbin;
 	wire [ADDRSIZE:0] rgraynext, rbinnext;
@@ -36,14 +39,15 @@ module rptr_empty #(parameter ADDRSIZE = 8)
 	// for almost
 	assign rempty_val_almost = (rgraynext_almost == rq2_wptr);
 
+	assign rempty_almost = rempty_val_almost;
 
 	always @(posedge rclk or negedge rrst_n) begin
 		if (!rrst_n) begin
 			rempty <= 1'b1;
-			rempty_almost <= rempty_val_almost;
+			//rempty_almost <= rempty_val_almost;
 		end else begin
 			rempty <= rempty_val;
-			rempty_almost <= rempty_val_almost;
+			//rempty_almost <= rempty_val_almost;
 		end
 	end
 

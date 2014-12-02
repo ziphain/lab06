@@ -36,6 +36,10 @@ module stimulus;
 	always #(wcyc/2) wclk = ~wclk;
 
 		initial begin
+			$sdf_annotate("fifo.sdf", fifo);
+		end
+
+		initial begin
 			$fsdbDumpfile("fifo.fsdb");
 			$fsdbDumpvars;
 
@@ -65,7 +69,7 @@ module stimulus;
 			#(wcyc) wrst_n = 1; rrst_n = 1;
 			 
 			
-			//#(rcyc) rinc = 1;
+			#(rcyc) rinc = 1;
 
 			#(wcyc) winc = 1; 
 			#(wcyc) wdata = 16'd16;
@@ -78,6 +82,10 @@ module stimulus;
 			#(rcyc);
 			#(rcyc);
 			#(rcyc);
+			#(rcyc);
+
+			
+
 
 			#(rcyc*8); $finish;
 		end

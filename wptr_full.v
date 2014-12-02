@@ -1,6 +1,7 @@
 module wptr_full #(parameter ADDRSIZE=8)
 (
-	output reg				wfull, wfull_almost,
+	output reg				wfull, 
+	output wfull_almost,
 	output 				fifo_error_w,
 	output [ADDRSIZE-1:0] waddr,
 	output reg [ADDRSIZE:0] wptr,
@@ -33,6 +34,8 @@ assign wgraynext = (wbinnext >> 1) ^ wbinnext;
 assign wbinnext_almost = wbin + (winc & ~wfull) + 1'b1;
 assign wgraynext_almost = (wbinnext_almost >> 1) ^ wbinnext_almost + 1'b1;
 
+assign wfull_almost = wfull_val_almost;
+
 //------------------------------------------------------------------
 // Simplified version of the three necessary full-tests:
 // assign wfull_val=((wgnext[ADDRSIZE] !=wq2_rptr[ADDRSIZE] ) &&
@@ -60,10 +63,10 @@ end
 always @(posedge wclk or negedge wrst_n) begin
 	if (!wrst_n) begin
 		wfull <= 1'b0;
-		wfull_almost <= 1'b0;
+		//wfull_almost <= 1'b0;
 	end else begin
 		wfull <= wfull_val;
-		wfull_almost <= wfull_val_almost;
+		//wfull_almost <= wfull_val_almost;
 	end
 end
 

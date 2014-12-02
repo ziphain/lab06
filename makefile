@@ -9,7 +9,7 @@ SRC	=	RA2SH.v\
 
 SRC_syn	=	RA2SH.v\
 		fifo_syn.v\
-		testbench.v
+		testbench_syn.v
 
 TIME	=	+nospecify +notimeingchecks
 
@@ -19,7 +19,7 @@ TEPFILE	=	*.log	\
 		ncverilog.key	\
 		nWaveLog	\
 		INCA_libs
-DBFILE	=       *.fsdb  *.vcd   *.bak
+DBFILE	=       *.fsdb  *.vcd   *.bak	*.pvl	*.syn 	*.ddc
 RM	=	-rm	-rf
 
 CellLib = /theda21_2/CBDK_IC_Contest/cur/Verilog/tsmc13.v
@@ -30,8 +30,8 @@ all :: sim
 sim :
 	$(VLOG)	$(SRC) $(VLOGARG)
 
-syn:
-	$(VLOG)	$(SRC)	$(CellLib)	$(VLOGARG)	$(TIMESCALE)
+syn :
+	$(VLOG)	$(SRC_syn)	$(CellLib)	$(VLOGARG)	$(TIMESCALE)
 
 clean :
 	$(RM)	$(TMPFILE)

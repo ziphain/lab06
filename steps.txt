@@ -18,3 +18,32 @@ Steps:
 	直到沒有錯誤，milestone：壓縮成source.zip
 
 3. And then, 做RTL simulation前，先寫個testbench
+
+如何及何時產生dc檔？在dv時產生的
+
+4. 
+read_lib RA2SH_slow_syn.lib
+read_lib RA2SH_fast@0C_syn.lib
+write_lib USERLIB -output fifo_fast.db 
+write_lib USERLIB -output fifo_slow.db
+
+在synopsys_dc.setup中：
+set target_library "slow.db fast.db fifo_slow.db fifo_fast.db"
+set link_library      "slow.db fast.db dw_foundation.sldb fifo_slow.db fifo_fast.db"
+
+然後將.db檔，加到fifo.dc中的 set_local_link_library裡面
+
+
+
+
+5. Synthesis
+
+
+analyze -library WORK -format verilog {wptr_full.v sync_w2r.v sync_r2w.v rptr_empty.v fifo1.v}
+elaborate fifo1 -architecture verilog -library DEFAULT
+source fifo.dc
+uplevel #0 check_design
+compile -exact_map
+write -hierarchy -format verilog -output fifo_syn.v
+write_sdf -version 1.0 -context verilog fifo.sdf
+exit
