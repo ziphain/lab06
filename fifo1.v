@@ -18,7 +18,7 @@ module fifo1 #(parameter DSIZE = 16,parameter ADDRSIZE = 8)
 sync_r2w sync_r2w(.wq2_rptr(wq2_rptr), .rptr(rptr), .wclk(wclk), .wrst_n(wrst_n));
 sync_w2r sync_w2r(.rq2_wptr(rq2_wptr), .wptr(wptr), .rclk(rclk), .rrst_n(rrst_n));
 
-RA2SH #(DSIZE,ADDRSIZE) fifomem
+RA2SH fifomem
 (  // port A: write port
    .QA(qa),	      // Data output A
    .CLKA(~wclk),   // **

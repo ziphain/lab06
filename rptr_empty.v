@@ -54,17 +54,13 @@ module rptr_empty #(parameter ADDRSIZE = 8)
 	// for almost
 	assign rempty_val_almost = (rgraynext_almost == rq2_wptr);
 
-	always @* begin
-		rempty_almost = rempty_val_almost;
-	end
-
 	always @(posedge rclk or negedge rrst_n) begin
 		if (!rrst_n) begin
 			rempty <= 1'b1;
 			//rempty_almost <= rempty_val_almost;
 		end else begin
 			rempty <= rempty_val;
-			//rempty_almost <= rempty_val_almost;
+			rempty_almost <= rempty_val_almost;
 		end
 	end
 
